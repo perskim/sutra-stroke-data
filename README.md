@@ -4,7 +4,7 @@
 [KanjiVG](https://kanjivg.tagaini.net)와 [Make Me a Hanzi](https://github.com/skishore/makemeahanzi)에서 앱에 실린 글의 한자만 골라, 한국에서 쓰는 자형에 맞게 고친 것입니다.
 두 원본의 사용 조건에 따라 고친 자료를 같은 사용권으로 여기에 공개합니다. 이 저장소에는 획 자료와 그 사용권 글만 있습니다(경전 본문 · 앱 코드는 없습니다).
 
-판: 2026-11-22 · 앱에 싣는 파일과 바이트까지 같습니다.
+판: 2026-11-24 · 앱에 싣는 파일과 바이트까지 같습니다.
 
 | 파일 | 바탕 | 사용권 | 글자 수 |
 |---|---|---|---|
@@ -42,7 +42,8 @@
 - 좌표를 MMAH 의 1024 격자(y 위로)에서 단위 정사각 x/1024 · (900 − y)/1024(y 아래로)로 옮겼습니다(소수 넷째 자리).
 - 획 윤곽의 곡선을 펴서 다각형으로 만들고 줄였습니다(허용 어긋남 0.6 격자 단위, Ramer–Douglas–Peucker). 중심선(medians)은 길이에 고르게 16점으로 다시 뽑았습니다.
 - 획순: 위 KanjiVG 자료와 획 수가 같은 997자는 KanjiVG 획순에 맞췄습니다(`order: "kanjivg"`) — 그 가운데 실제로 획 자리나 방향이 바뀐 221자는 `changes.chars` 에 하나씩 적혀 있습니다. 획 수가 다른 130자는 MMAH 획순 그대로입니다(`order: "mmah"`).
-- MMAH 에 없는 卽 은 MMAH 의 白 + 匕 + 即 의 卩 으로 조립했습니다. 그 밖에 MMAH 에 없는 37자는 싣지 않았고 `missing` 에 있습니다.
+- MMAH 에 없는 卽 은 MMAH 의 白 + 匕 + 即 의 卩 으로 조립했습니다.
+- 2026-11-24: MMAH 에 없는 한국 꼴 25자를 같은 방법으로 MMAH 부품에서 지었습니다 — 같은 짜임의 MMAH 글자에서 부품 자리를 빌려 부품 획을 옮겨 늘이거나(喫 = 吃 의 口 + 契 · 淸 = 氵 + 靑 · 敎 = 爻 + 子 + 攵 · 旣 = 白 + 匕 + 旡 · 麤 = 鹿 셋 …), 꼴이 같은 MMAH 이체자를 씁니다(爲 ← 為 · 僞 ← 偽 · 晩 ← 晚 · 兎 ← 兔). 글자마다 무엇으로 지었는지는 파일 머리 `changes.chars` 에 있습니다. 남은 14자는 `missing` 에 있습니다.
 - 쓰는 획 수(= 이 모양의 획 수)가 사전 획수와 다른 100자는 `writeDiff` 에 까닭과 함께 있습니다.
 - 칸: `chars[글자].outline` = 획마다 채울 다각형들 `[[x, y], …]` · `.median` = 획마다 중심선 점 16개 · `.order` · `.write` · `writeDiff` · `missing` · `source` · `license` · `changes`.
 - 파일 머리 `license` 의 «docs/licenses/» 는 앱 저장소 안의 자리이고, 이 저장소에서는 맨 위의 `ARPHICPL.TXT` 입니다(Arphic Public License 가 요구하는 대로 이름과 내용을 고치지 않았습니다).
@@ -63,7 +64,7 @@ Two files of Chinese-character stroke data. The handwriting (sutra-copying) scre
 They are subsets of [KanjiVG](https://kanjivg.tagaini.net) and [Make Me a Hanzi](https://github.com/skishore/makemeahanzi), limited to the characters that occur in the app's texts and adapted to the glyph forms used in Korea.
 As both upstream licences require, the adapted data is published here under the same licences. This repository holds only the stroke data and its licence texts (no sutra texts, no app code).
 
-Version: 2026-11-22 · byte-identical to the files shipped in the app.
+Version: 2026-11-24 · byte-identical to the files shipped in the app.
 
 | File | Based on | Licence | Characters |
 |---|---|---|---|
@@ -101,7 +102,8 @@ Every change is also recorded in each file's `changes` field — `changes.genera
 - Coordinates mapped from MMAH's 1024 grid (y up) to the unit square x/1024, (900 − y)/1024 (y down), 4 decimals.
 - Stroke outlines' curves flattened to polygons and simplified (tolerance 0.6 grid units, Ramer–Douglas–Peucker); medians resampled to 16 points by arc length.
 - Stroke order: the 997 characters with the same stroke count as in the KanjiVG data above follow the KanjiVG order (`order: "kanjivg"`) — the 221 of them whose strokes actually moved or were reversed are noted one by one in `changes.chars`. The 130 characters with a different stroke count keep MMAH's order (`order: "mmah"`).
-- 卽, absent from MMAH, is assembled from MMAH's 白 + 匕 + the 卩 of 即. The other 37 characters MMAH lacks are left out and listed in `missing`.
+- 卽, absent from MMAH, is assembled from MMAH's 白 + 匕 + the 卩 of 即.
+- 2026-11-24: 25 more characters MMAH lacks in their Korean form are built the same way from MMAH components — parts moved into the boxes of the matching parts of an MMAH character of the same structure (喫 = 口 of 吃 + 契, 淸 = 氵 + 靑, 敎 = 爻 + 子 + 攵, 旣 = 白 + 匕 + 旡, 麤 = three 鹿 …), or an MMAH variant of the same shape (爲 ← 為, 僞 ← 偽, 晩 ← 晚, 兎 ← 兔). What each is built from is in `changes.chars`. The remaining 14 are listed in `missing`.
 - The 100 characters whose written stroke count differs from the Korean dictionary count are listed in `writeDiff` with the reason.
 - Fields: `chars[char].outline` = per stroke, the polygons to fill `[[x, y], …]` · `.median` = per stroke, 16 centreline points · `.order` · `.write` · `writeDiff` · `missing` · `source` · `license` · `changes`.
 - The path «docs/licenses/» in the file's `license` field is where the licence sits in the app's own repository; here it is `ARPHICPL.TXT` at the top level, with its name and contents unaltered as the Arphic Public License requires.
